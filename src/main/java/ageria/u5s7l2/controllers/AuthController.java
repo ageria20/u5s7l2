@@ -1,9 +1,6 @@
 package ageria.u5s7l2.controllers;
 
-import ageria.u5s7l2.dto.EmployeeDTO;
-import ageria.u5s7l2.dto.EmployeeLoginDTO;
-import ageria.u5s7l2.dto.EmployeeLoginRespDTO;
-import ageria.u5s7l2.dto.NewEmployeeRespDTO;
+import ageria.u5s7l2.dto.*;
 import ageria.u5s7l2.exception.BadRequestException;
 import ageria.u5s7l2.services.AuthService;
 import ageria.u5s7l2.services.EmployeeService;
@@ -40,5 +37,11 @@ public class AuthController {
         } else {
             return new NewEmployeeRespDTO(this.employeeService.saveEmployee(body).getId());
         }
+    }
+
+    @PostMapping("/mail")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void sendEmail(@RequestBody EmailDTO body) {
+        this.authService.sendEmail(body);
     }
 }

@@ -51,9 +51,9 @@ public class EmployeeService {
         }
 
         Employee newEmployee = new Employee(
+                body.username(),
                 body.name(),
                 body.surname(),
-                body.username(),
                 body.email(),
                 bcrypt.encode(body.password()),
                 "https://ui-avatars.com/api/?name=" + body.name() + "+" + body.surname());
