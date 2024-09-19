@@ -4,6 +4,7 @@ import ageria.u5s7l2.dto.*;
 import ageria.u5s7l2.exception.BadRequestException;
 import ageria.u5s7l2.services.AuthService;
 import ageria.u5s7l2.services.EmployeeService;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -41,7 +42,7 @@ public class AuthController {
 
     @PostMapping("/mail")
     @ResponseStatus(HttpStatus.CREATED)
-    public void sendEmail(@RequestBody EmailDTO body) {
+    public void sendEmail(@RequestBody EmailDTO body) throws MessagingException {
         this.authService.sendEmail(body);
     }
 }

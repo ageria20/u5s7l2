@@ -38,12 +38,19 @@ public class AuthService {
 
     public void sendEmail(EmailDTO email) {
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("alessio@whimsykistchen.com"); // si puo passare come parametro
+        msg.setTo("ageria20@gmail.com"); // si puo passare come parametro
         msg.setSubject("MAIL FROM SITE");
-        msg.setText("Email da: " + email.name() +
-                " Azienda: " + email.azienda() + " email: " + email.email()
-                + " telefono: " + email.number() + " Luogo Evento: " + email.luogo() +
-                " Data Evento: " + email.data() + " Richiesta: " + email.richiesta());
+        String htmlMsg = "<html>" +
+                "<p><strong>Email da:</strong> " + email.name() + "</p>" +
+                "<p><strong>Azienda:</strong> " + email.azienda() + "</p>" +
+                "<p><strong>Email:</strong> " + email.email() + "</p>" +
+                "<p><strong>Telefono:</strong> " + email.number() + "</p>" +
+                "<p><strong>Luogo Evento:</strong> " + email.luogo() + "</p>" +
+                "<p><strong>Data Evento:</strong> " + email.data() + "</p>" +
+                "<p><strong>Richiesta:</strong> " + email.richiesta() + "</p>" +
+                "</html>";
+        msg.setText(htmlMsg);
+        javaMailSender.send(msg);
     }
 
 }
